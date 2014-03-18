@@ -1,0 +1,76 @@
+﻿when temp < 22 then of | 
+    When.Count == 1 && Then.Count == 1 && 
+    When[0].Topic == "temp" && 
+    When[0].Devices == null && 
+    When[0].Comparison == LessThan && 
+    When[0].Value == "22";
+
+when temp < 22 then tv = up | 
+    When.Count == 1 && Then.Count == 1 && 
+    Then[0].Topic == "tv" && 
+    Then[0].Devices == null && 
+    Then[0].Value == "up";
+
+when temp < 22 then mg = "quoted text works" | 
+    When.Count == 1 && Then.Count == 1 && 
+    Then[0].Topic == "mg" && 
+    Then[0].Devices == null && 
+    Then[0].Value == "quoted text works";
+
+when in == true then mg(cel) = "It's cold in the kids' room" | 
+    When.Count == 1 && Then.Count == 1 && 
+    Then[0].Topic == "mg" && 
+    Then[0].Devices == "cel" && 
+    Then[0].Value == "It's cold in the kids' room";
+
+when temp(kids, kitchen, living) > 24 && in(kids) == true then on | 
+    When.Count == 2 && Then.Count == 1 && 
+    When[0].Topic == "temp" && 
+    When[0].Devices == "kids, kitchen, living" && 
+    When[0].Comparison == GreaterThan && 
+    When[0].Value == "24" && 
+    When[1].Topic == "in" &&
+    When[1].Devices == "kids" &&
+    When[1].Comparison == Equal && 
+    When[1].Value == "true";
+
+when temp(kids) > 24 && in(kids) == true then on(kidsAC) | 
+    When.Count == 2 && Then.Count == 1 && 
+    When[0].Topic == "temp" && 
+    When[0].Devices == "kids" && 
+    When[0].Comparison == GreaterThan && 
+    When[0].Value == "24" && 
+    When[1].Topic == "in" &&
+    When[1].Devices == "kids" &&
+    When[1].Comparison == Equal && 
+    When[1].Value == "true" && 
+    Then[0].Topic == "on" && 
+    Then[0].Devices == "kidsAC" && 
+    Then[0].Value == null;
+
+when in(kids) == true then mg = hot && of(kitchen) |
+    When.Count == 1 && Then.Count == 2 && 
+    When[0].Topic == "in" &&
+    When[0].Devices == "kids" &&
+    When[0].Comparison == Equal && 
+    When[0].Value == "true" && 
+    Then[0].Topic == "mg" && 
+    Then[0].Value == "hot" &&
+    Then[1].Topic == "of" && 
+    Then[1].Devices == "kitchen" && 
+    Then[1].Value == null;
+
+// A valid comment
+when in(house) == false then of(kids, master, kitchen) && on(alarm) | 
+    When.Count == 1 && 
+    Then.Count == 2 && 
+    When[0].Topic == "in" && 
+    When[0].Devices == "house" && 
+    When[0].Comparison == Equal && 
+    When[0].Value == "false" && 
+    Then[0].Topic == "of" && 
+    Then[0].Devices == "kids, master, kitchen" && 
+    Then[0].Value == null && 
+    Then[1].Topic == "on" && 
+    Then[1].Devices == "alarm" && 
+    Then[1].Value == null;

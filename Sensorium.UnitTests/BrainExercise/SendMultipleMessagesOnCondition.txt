@@ -1,0 +1,16 @@
+﻿setup
+    number t
+    void of
+    string mg
+    bool in
+
+    when t == 23 then of(kidsAc) && mg(mom) = "Exactly 23!" && in(home) = true
+given
+    mg(dad) = "Hello everyone"
+    in(car) = true
+    t = 22
+    t = 23
+verify
+    of(kidsAc)
+    mg(mom) = "Exactly 23!" 
+    in(home) = true

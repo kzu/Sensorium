@@ -1,0 +1,17 @@
+package Sensorium;
+
+message Connect {
+   required string DeviceId = 1;
+   required string DeviceType = 2;
+}
+
+message Disconnect {
+}
+
+message Ping {
+}
+
+message Topic {
+   required string Topic = 1;
+   optional bytes Payload = 2;
+}

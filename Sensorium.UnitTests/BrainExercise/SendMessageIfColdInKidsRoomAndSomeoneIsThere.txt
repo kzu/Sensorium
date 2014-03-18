@@ -1,0 +1,11 @@
+﻿setup
+    number t
+    bool in
+    string mg
+
+    when t(kidsRoom) < 23 && in(kidsRoom) == true then mg(cel) = "It's cold in the kids' room"
+given
+    t(kidsRoom) = 22
+    in(kidsRoom) = true
+verify
+    mg(cel) = "It's cold in the kids' room"

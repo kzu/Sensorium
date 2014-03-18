@@ -1,0 +1,5 @@
+﻿message = |length|body|
+length = 1 byte (since zigbee only has short messages)
+body = |type|payload|
+type = 1 byte: Connect = 0, Topic = 1, Ping = 2, Disconnect = 3
+payload = up to 60 bytes?

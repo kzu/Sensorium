@@ -1,0 +1,26 @@
+﻿number t "Temperature";             // temp
+void on "On";                       // use two-chars as it makes MQTT-S a breeze.
+void of "Off;                       // on/off are void, they have no payload.
+string mg "Message";                // arbitrary message? useful for config stuff?
+bool in "Presence";                 // someone moved or is in the place.
+number sys/t/h "System Hour";       // System date/time information
+number sys/t/m "System Minute";
+number sys/t/s "System Second";
+number sys/d/d "System Day";
+number sys/d/m "System Month";
+number sys/d/y "System Year";
+
+// Eventually, there could be an "import" of a kinda namespace/header
+// with all built-in topics and their types.
+
+// turn off air conditioning if it's too cold
+when t(kidsRoom) < 23 then of(kidsAc)
+
+// turn on air conditioning if it's too hot
+when t(kidsRoom) > 25 then on(kidsAc)
+
+// turn off lights if nobody is at the room
+when in(kidsRoom) == false then of(kidsLights)
+
+// turn off TV and lights when it's over 10pm
+when sys/t/h > 22 then of(kidsTV, kidsLights)

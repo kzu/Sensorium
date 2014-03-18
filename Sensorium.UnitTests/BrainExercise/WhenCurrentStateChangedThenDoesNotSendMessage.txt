@@ -1,0 +1,12 @@
+﻿setup
+    number t
+    bool in
+    void of
+
+    when t < 23 && in(kids) == true then of(kidsAc)
+given
+    t = 22
+    t = 24
+    in(kids) = true
+verify
+    !of(kidsAc)

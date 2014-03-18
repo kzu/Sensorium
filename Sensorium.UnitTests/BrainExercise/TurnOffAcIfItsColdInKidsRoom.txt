@@ -1,0 +1,9 @@
+﻿setup
+    number t
+    void of
+
+    when t(kidsRoom) < 23 then of(kidsAc)
+given
+    t(kidsRoom) = 22
+verify
+    of

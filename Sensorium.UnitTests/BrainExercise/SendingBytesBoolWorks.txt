@@ -1,0 +1,9 @@
+﻿setup
+    bool in
+    void of
+
+    when in == true then of
+given
+    in = "[01]"
+verify
+    of
